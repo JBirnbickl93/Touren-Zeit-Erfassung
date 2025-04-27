@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
@@ -18,15 +19,18 @@ public class TourEntity {
     @NotBlank(message = "End-Ort darf nicht leer sein!")
     private String endOrt;
 
-    @NotBlank(message = "Start-Zeit darf nicht leer sein!")
+
+    // NotBlank nur bei String, sonst NotNull
+    // Format für LocalDateTime: "2025-04-28T08:00:00"
+    @NotNull(message = "Start-Zeit darf nicht leer sein!")
     private LocalDateTime startZeit;
-    @NotBlank(message = "End-Zeit darf nicht leer sein!")
+    @NotNull(message = "End-Zeit darf nicht leer sein!")
     private LocalDateTime endZeit;
 
     @NotBlank(message = "Ein Mitarbeiter muss zugewiesen werden!")
     private String mitarbeiterName;
 
-    @NotBlank(message = "Fahrzeug muss ausgewählt werden!")
+    @NotNull(message = "Fahrzeug muss ausgewählt werden!")
     private int fahrzeugId;
 
     @NotBlank(message = "Tour-Kommentar darf nicht leer sein!")
