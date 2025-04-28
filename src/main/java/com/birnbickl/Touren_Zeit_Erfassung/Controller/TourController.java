@@ -1,6 +1,7 @@
 package com.birnbickl.Touren_Zeit_Erfassung.Controller;
 
 import com.birnbickl.Touren_Zeit_Erfassung.DTO.TourDTO;
+import com.birnbickl.Touren_Zeit_Erfassung.DTO.TourPatchDTO;
 import com.birnbickl.Touren_Zeit_Erfassung.Entity.TourEntity;
 import com.birnbickl.Touren_Zeit_Erfassung.Mapper.TourMapper;
 import com.birnbickl.Touren_Zeit_Erfassung.Service.TourService;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class TourController {
@@ -71,6 +73,41 @@ public class TourController {
             TourDTO responseDto = TourMapper.toDto(entity);
             return ResponseEntity.ok(responseDto);
         }
+    }
+
+    @PatchMapping("/tours/{id}")
+    public ResponseEntity<TourDTO> patchTourById(@PathVariable Integer id, @RequestBody TourPatchDTO patchDto) {
+        Optional<TourEntity> optionalEntity = tourService.getTourById(id);
+        if(optionalEntity.isPresent()){
+            TourEntity entity = optionalEntity.get();
+            if(patchDto.getStartOrt().isPresent()){
+                entity.setStartOrt(patchDto.getStartOrt().get());
+            }
+            if(patchDto.getEndOrt().isPresent()){
+                entity.setEndOrt(patchDto.getEndOrt().get());
+            }
+            if(patchDto.getStartZeit().isPresent()){
+                entity.setStartZeit(patchDto.getStartZeit().get());
+            }
+            if(patchDto.getEndZeit().isPresent()){
+                entity.setEndZeit(patchDto.getEndZeit().get());
+            }
+            if(patchDto.getMitarbeiterName().isPresent()){
+                entity.setMitarbeiterName(patchDto.getMitarbeiterName().get());
+            }
+            if(patchDto.getFahrzeugId().isPresent()){
+                entity.setFahrzeugId(patchDto.getFahrzeugId().get());
+            }
+            if(patchDto.getTourKommentar().isPresent()){
+                entity.setTourKommentar(patchDto.getTourKommentar().get());
+            }
+            tourService.saveTour(entity);
+            TourDTO responseDto = TourMapper.toDto(entity);
+            return ResponseEntity.ok(responseDto);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+
     }
 
 }
