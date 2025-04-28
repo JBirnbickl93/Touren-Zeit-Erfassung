@@ -1,5 +1,6 @@
 package com.birnbickl.Touren_Zeit_Erfassung.ErrorHandling;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -46,5 +47,19 @@ public class GlobalExceptionHandler {
         ApiError apiError = new ApiError(LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(), "Constraint violation.", errors);
         return ResponseEntity.badRequest().body(apiError);
 
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ApiError> handleEntityNotFoundException (EntityNotFoundException exception) {
+        List<String> errors = List.of("The requested entity was not found.");
+        ApiError apiError = new ApiError(LocalDateTime.now(), HttpStatus.NOT_FOUND.value(), "Not found.", errors);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ApiError> handleGenericException (Exception exception) {
+        List<String> errors = List.of("An unknown error occurred.");
+        ApiError apiError = new ApiError(LocalDateTime.now(), HttpStatus.INTERNAL_SERVER_ERROR.value(), "Internal server error.", errors);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(apiError);
     }
 }

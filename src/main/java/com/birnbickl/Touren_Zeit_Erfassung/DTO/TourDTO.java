@@ -1,14 +1,28 @@
 package com.birnbickl.Touren_Zeit_Erfassung.DTO;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 public class TourDTO {
 
+    @NotBlank(message = "StartOrt darf nicht leer sein!")
     private String startOrt;
+    @NotBlank(message = "EndOrt darf nicht leer sein!")
     private String endOrt;
+
+    @NotNull(message = "StartZeit muss angegeben werden!")
     private LocalDateTime startZeit;
+    @NotNull(message = "EndZeit muss angegeben werden!")
     private LocalDateTime endZeit;
+
+    @NotBlank(message = "MitarbeiterName darf nicht leer sein!")
+    @Size(max = 100, message ="MitarbeiterName darf maximal 100 Zeichen lang sein!")
     private String mitarbeiterName;
+
+    @NotNull(message = "FahrzeugId muss angegeben werden!")
     private Integer fahrzeugId;
     private String tourKommentar;
 
