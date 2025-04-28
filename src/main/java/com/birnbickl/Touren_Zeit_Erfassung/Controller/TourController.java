@@ -7,10 +7,7 @@ import com.birnbickl.Touren_Zeit_Erfassung.Service.TourService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,7 +41,37 @@ public class TourController {
         }
     }
 
+    @GetMapping("/tours/{id}")
+    public ResponseEntity<TourDTO> getTourById(@PathVariable ("id") Integer id) {
+        return tourService.getTourById(id)
+                .map(TourMapper::toDto)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
+
+    @DeleteMapping("/tours/{id}")
+    public ResponseEntity<Void> deleteTourById(@PathVariable ("id") Integer id) {
+        if(tourService.getTourById(id).isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            tourService.deleteTour(id);
+            return ResponseEntity.noContent().build();
+        }
+    }
+
+    @PutMapping("/tours/{id}")
+    public ResponseEntity<TourDTO> putTourById(@PathVariable Integer id, @Valid @RequestBody TourDTO requestDto) {
+        if(tourService.getTourById(id).isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            TourEntity entity = TourMapper.toEntity(requestDto);
+            entity.setId(id);
+            tourService.saveTour(entity);
+            TourDTO responseDto = TourMapper.toDto(entity);
+            return ResponseEntity.ok(responseDto);
+        }
+    }
 
 }
 
