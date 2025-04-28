@@ -23,11 +23,11 @@ public class TourController {
     }
 
     @PostMapping("/tours")
-    public ResponseEntity<String> postTours(@Valid @RequestBody TourDTO requestDto) {
+    public ResponseEntity<TourDTO> postTours(@Valid @RequestBody TourDTO requestDto) {
         TourEntity entity = TourMapper.toEntity(requestDto);
         TourEntity saved = tourService.saveTour(entity);
         TourDTO responseDto = TourMapper.toDto(saved);
-        return ResponseEntity.status(HttpStatus.CREATED).body(responseDto.toString());
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
 
 }
     @GetMapping("/tours")
