@@ -62,4 +62,12 @@ public class GlobalExceptionHandler {
         ApiError apiError = new ApiError(LocalDateTime.now(), HttpStatus.INTERNAL_SERVER_ERROR.value(), "Internal server error.", errors);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(apiError);
     }
+
+    @ExceptionHandler
+    public ResponseEntity<ApiError> usernameAlreadyExists(UsernameAlreadyExistsException exception) {
+        List<String> errors = List.of(exception.getMessage());
+        ApiError apiError = new ApiError(LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(), "Username already exists.", errors);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
+    }
+
 }
