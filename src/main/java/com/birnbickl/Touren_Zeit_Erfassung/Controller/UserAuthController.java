@@ -1,5 +1,6 @@
 package com.birnbickl.Touren_Zeit_Erfassung.Controller;
 
+import com.birnbickl.Touren_Zeit_Erfassung.DTO.UserLoginDTO;
 import com.birnbickl.Touren_Zeit_Erfassung.DTO.UserRegistrationDTO;
 import com.birnbickl.Touren_Zeit_Erfassung.Entity.UserEntity;
 import com.birnbickl.Touren_Zeit_Erfassung.Service.UserService;
@@ -28,4 +29,9 @@ public class UserAuthController {
         return ResponseEntity.status(HttpStatus.CREATED).body("User Registration successfully");
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@Valid @RequestBody UserLoginDTO loginDTO) {
+        userService.loginUser(loginDTO.getUsername(), loginDTO.getPassword());
+        return ResponseEntity.ok("Login successfully - Dummy-Token: abc123");
+    }
 }

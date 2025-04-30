@@ -1,13 +1,14 @@
 package com.birnbickl.Touren_Zeit_Erfassung.Entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 
-
+@Entity
 public class UserEntity {
 
     @Id
@@ -27,6 +28,9 @@ public class UserEntity {
         this.password = password;
     }
 
+    public UserEntity() {
+        super();
+    }
 
     public long getId() {
         return id;
