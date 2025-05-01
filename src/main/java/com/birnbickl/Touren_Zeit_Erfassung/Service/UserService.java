@@ -13,10 +13,12 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepo;
     private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
 
-    public UserService(UserRepository userRepo, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepo, PasswordEncoder passwordEncoder, JwtService jwtService) {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
     }
 
     public UserEntity registerNewUser(String username, String password) {
@@ -44,7 +46,7 @@ public class UserService {
         if(!passwordEncoder.matches(password, user.getPassword()))
         {throw new InvalidCredentialsException("Invalid Credentials!");}
         else{
-            return "Login Successful! - dummy-token-abc123";
+            return jwtService.generateToken(user);
             }
         }
 
