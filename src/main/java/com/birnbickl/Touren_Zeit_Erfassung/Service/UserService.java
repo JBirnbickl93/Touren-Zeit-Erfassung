@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+// Diese Klasse beinhaltet alle Methoden um einen User zu registrieren und einzuloggen.
+// Außerdem wird sichergestellt, dass der User beim Login ein JWT erhält.
+
 @Service
 public class UserService {
     private final UserRepository userRepo;
@@ -33,8 +36,7 @@ public class UserService {
         }
     }
 
-    // Soll für ersten Schritt ein Dummy-Token zum Testen ausgeben.
-    // Gibt später ein JWT zurück.
+
     public String loginUser(String username, String password) {
         Optional<UserEntity> userOptional = userRepo.findByUsername(username);
 

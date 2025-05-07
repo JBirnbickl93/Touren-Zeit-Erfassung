@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 
-
+// Diese Klasse beinhaltet die Methode um das JWT zu generieren, sowie die Methode zur Verschlüsselung.
 @Service
 public class JwtService {
 
@@ -34,6 +34,9 @@ public class JwtService {
 
 
     }
+
+    // Diese Methode erstellt den kryptographischen Schlüssel zum Signieren von JWTs basierend auf dem
+    // geheimen String (secret).
 
     private Key getSigningkey() {
         byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);
