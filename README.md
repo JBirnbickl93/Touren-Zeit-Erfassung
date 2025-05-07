@@ -12,7 +12,7 @@ Ein Unternehmen (z. B. ein Handwerksbetrieb oder Beförderungsunternehmen) soll 
 - Fahrzeug
 - Kommentar
 
-Die Anwendung dient als „Mini-ERP“ für den mobilen Einsatz und kann leicht erweitert werden.
+
 
 
 
@@ -24,7 +24,7 @@ Die Anwendung dient als „Mini-ERP“ für den mobilen Einsatz und kann leicht 
 - Spring Data JPA
 - H2-Datenbank (für Entwicklung)
 - Spring Validation (Bean Validation)
-- Optional: Spring Security + JWT
+- Spring Security + JWT
 
 ✍️ Features (MVP)
 
@@ -47,12 +47,7 @@ Integer fahrzeugId;
 String tourKommentar;
 }
 
-Optional erweiterbar um:
 
-Mitarbeiterverwaltung
-Fahrzeugdaten
-Zeiterfassung & Sonderleistungen
-Benutzer-Login & Rollen
 
 💡Showcase
 
@@ -63,7 +58,6 @@ Datenbankbindung mit Spring Data JPA<br>
 Saubere Fehlerhandling mit @ControllerAdvice<br>
 Security (JWT) & Benutzerverwaltung<br>
 
-🌐 API-Design (Beispiele)
 
 
 🏗 Projektstruktur 
@@ -78,12 +72,4 @@ src/main/java <br>
 └── exception<br>
 
 
-
-🏆 Bonusideen:
-
-Admin-Login mit Spring Security & JWT<br>
-Frontend (React / Vue) mit API-Anbindung<br>
-Dockerfile + Deployment auf Railway / Render<br>
-H2-Konsole für manuelles Testing<br>
-Datenbankwechsel zu PostgreSQL<br>
 
