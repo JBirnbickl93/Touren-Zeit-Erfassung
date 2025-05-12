@@ -3,6 +3,9 @@ package com.birnbickl.Touren_Zeit_Erfassung.ErrorHandling;
 import java.time.LocalDateTime;
 import java.util.List;
 
+// Klasse um die Schnittstellen-Fehler aufzufangen.
+// Weitere Fehler / Ausnahmen werden in entsprechenden Klassen implementiert.
+
 public class ApiError {
     private LocalDateTime timestamp;
     private int status;

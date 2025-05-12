@@ -8,6 +8,10 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
+
+// Klasse um Touren als Datenmodell darzustellen
+
+
 @Entity
 public class TourEntity {
     @Id
@@ -18,7 +22,6 @@ public class TourEntity {
     private String startOrt;
     @NotBlank(message = "End-Ort darf nicht leer sein!")
     private String endOrt;
-
 
     // NotBlank nur bei String, sonst NotNull
     // Format für LocalDateTime: "2025-04-28T08:00:00"

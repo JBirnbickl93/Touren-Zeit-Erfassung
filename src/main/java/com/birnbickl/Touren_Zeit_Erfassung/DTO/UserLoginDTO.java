@@ -3,6 +3,8 @@ package com.birnbickl.Touren_Zeit_Erfassung.DTO;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+// Klasse um beim Login mit DTOs zu arbeiten
+
 public class UserLoginDTO {
 
     @NotBlank(message = "Username darf nicht leer sein!")

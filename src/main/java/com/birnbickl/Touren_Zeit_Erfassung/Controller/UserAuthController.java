@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+// Controller Klasse, in der alle User Angelegenheiten entgegengenommen werden
+
 @RestController
 @RequestMapping("/api/auth")
 public class UserAuthController {
@@ -23,12 +25,16 @@ public class UserAuthController {
         this.userService = userService;
     }
 
+    // Methode zur User Registrierung
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@Valid @RequestBody UserRegistrationDTO userRegistrationDTO) {
         UserEntity newUser = userService.registerNewUser(userRegistrationDTO.getUsername(), userRegistrationDTO.getPassword());
         return ResponseEntity.status(HttpStatus.CREATED).body("User Registration successfully");
     }
+
+
+    // Methode für User Login
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@Valid @RequestBody UserLoginDTO loginDTO) {

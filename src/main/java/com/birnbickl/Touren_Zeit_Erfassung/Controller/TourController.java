@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+// Controller Klasse in der alle Tour Angelegenheiten entgegengenommen werden
+
 @RestController
 public class TourController {
     private final TourService tourService;
@@ -22,6 +24,8 @@ public class TourController {
         this.tourService = tourService;
     }
 
+
+    // Methode um neue Tour zu erstellen
     @PostMapping("/tours")
     public ResponseEntity<TourDTO> postTours(@Valid @RequestBody TourDTO requestDto) {
         TourEntity entity = TourMapper.toEntity(requestDto);
@@ -30,6 +34,8 @@ public class TourController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
 
 }
+
+    // Methode um alle Touren zu erhalten
     @GetMapping("/tours")
     public ResponseEntity<List<TourDTO>> getAllTours() {
         List<TourEntity> tourList = tourService.getAllTours();
@@ -43,6 +49,7 @@ public class TourController {
         }
     }
 
+    // Methode um eine Tour aus Datenbank zu erhalten
     @GetMapping("/tours/{id}")
     public ResponseEntity<TourDTO> getTourById(@PathVariable ("id") Integer id) {
         return tourService.getTourById(id)
@@ -51,7 +58,7 @@ public class TourController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-
+    // Methode um eine Tour zu löschen
     @DeleteMapping("/tours/{id}")
     public ResponseEntity<Void> deleteTourById(@PathVariable ("id") Integer id) {
         if(tourService.getTourById(id).isEmpty()) {
@@ -62,6 +69,7 @@ public class TourController {
         }
     }
 
+    // Methode um eine Tour komplett zu ersetzen
     @PutMapping("/tours/{id}")
     public ResponseEntity<TourDTO> putTourById(@PathVariable Integer id, @Valid @RequestBody TourDTO requestDto) {
         if(tourService.getTourById(id).isEmpty()) {
@@ -75,6 +83,7 @@ public class TourController {
         }
     }
 
+    // Methode um einzelne Teile einer Tour anzupassen
     @PatchMapping("/tours/{id}")
     public ResponseEntity<TourDTO> patchTourById(@PathVariable Integer id, @RequestBody TourPatchDTO patchDto) {
         Optional<TourEntity> optionalEntity = tourService.getTourById(id);

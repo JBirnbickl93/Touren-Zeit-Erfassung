@@ -24,6 +24,7 @@ public class UserService {
         this.jwtService = jwtService;
     }
 
+    // Methode um einen neuen User zu registrieren
     public UserEntity registerNewUser(String username, String password) {
 
         if (userRepo.findByUsername(username).isPresent()) {
@@ -36,7 +37,7 @@ public class UserService {
         }
     }
 
-
+    // Methode um einen User einzuloggen
     public String loginUser(String username, String password) {
         Optional<UserEntity> userOptional = userRepo.findByUsername(username);
 

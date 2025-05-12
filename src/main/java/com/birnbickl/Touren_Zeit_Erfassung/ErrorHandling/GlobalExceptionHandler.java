@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(apiError);
     }
 
-
+    // Exception, die aufgerufen wird, wenn Element nicht gefunden
     @ExceptionHandler
     public ResponseEntity<ApiError> handleNotFound (NoSuchElementException exception) {
         List<String> errors = List.of("The requested resource was not found.");
@@ -38,6 +38,7 @@ public class GlobalExceptionHandler {
     }
 
 
+    // Exception, die aufgerufen wird, wenn Datenbank-Constraint verletzt wird
     @ExceptionHandler
     public ResponseEntity<ApiError> handleConstraintViolation (ConstraintViolationException exception) {
         List<String> errors = exception.getConstraintViolations()
@@ -50,6 +51,7 @@ public class GlobalExceptionHandler {
 
     }
 
+    // Exception, wenn Datenbank-Eintrag nicht vorhanden
     @ExceptionHandler
     public ResponseEntity<ApiError> handleEntityNotFoundException (EntityNotFoundException exception) {
         List<String> errors = List.of("The requested entity was not found.");
@@ -64,6 +66,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(apiError);
     }
 
+    // Exception, wenn der Username bereits vergeben
     @ExceptionHandler
     public ResponseEntity<ApiError> usernameAlreadyExists(UsernameAlreadyExistsException exception) {
         List<String> errors = List.of(exception.getMessage());
@@ -71,6 +74,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
     }
 
+    // Exception, bei falschen LoginDaten
     @ExceptionHandler
     public ResponseEntity<ApiError> invalidCredentialsException (InvalidParameterException exception) {
         List<String> errors = List.of(exception.getMessage());

@@ -3,6 +3,9 @@ package com.birnbickl.Touren_Zeit_Erfassung.Mapper;
 import com.birnbickl.Touren_Zeit_Erfassung.DTO.TourDTO;
 import com.birnbickl.Touren_Zeit_Erfassung.Entity.TourEntity;
 
+
+// Diese Klasse soll zur Umwandlung von DTO in Entity und umgekehrt dienen. ==> Hilfsklasse
+// Dadurch werden DTOs übergeben und nicht die Entitäten aus der Datenbank. (Sicherheitsaspekt)
 public class TourMapper {
     public static TourEntity toEntity(TourDTO tourDTO) {
         TourEntity entity = new TourEntity();

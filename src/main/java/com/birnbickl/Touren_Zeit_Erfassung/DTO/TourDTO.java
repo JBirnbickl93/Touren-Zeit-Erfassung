@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 
+// "Hilfsklasse" um mit DTOs anstatt mit der Entität zu arbeiten
+
 public class TourDTO {
 
     @NotBlank(message = "StartOrt darf nicht leer sein!")

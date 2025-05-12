@@ -5,6 +5,9 @@ import org.springframework.cglib.core.Local;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+// "Hilfsklasse" um bei PATCH mit einem DTO zu arbeiten, dass Optionals zulässt,
+// in normaler Touren-Klasse (egal ob DTO oder Enity) muss Wert vorhanden sein beim Anlegen.
+
 public class TourPatchDTO {
 
     private Optional<String> startOrt;

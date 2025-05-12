@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+// Klasse um User als Datenmodell darzustellen
 
 @Entity
 public class UserEntity {
