@@ -1,7 +1,7 @@
-package com.birnbickl.Touren_Zeit_Erfassung.Service;
+package com.birnbickl.Service;
 
-import com.birnbickl.Touren_Zeit_Erfassung.Entity.TourEntity;
-import com.birnbickl.Touren_Zeit_Erfassung.Repository.TourRepository;
+import com.birnbickl.Entity.TourEntity;
+import com.birnbickl.Repository.TourRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,7 +1,7 @@
-package com.birnbickl.Touren_Zeit_Erfassung.Security;
+package com.birnbickl.Security;
 
-import com.birnbickl.Touren_Zeit_Erfassung.Service.JwtService;
-import com.birnbickl.Touren_Zeit_Erfassung.Service.UserService;
+import com.birnbickl.Service.JwtService;
+import com.birnbickl.Service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

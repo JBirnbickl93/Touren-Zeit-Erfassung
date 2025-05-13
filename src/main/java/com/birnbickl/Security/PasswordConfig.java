@@ -1,4 +1,4 @@
-package com.birnbickl.Touren_Zeit_Erfassung.Security;
+package com.birnbickl.Security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

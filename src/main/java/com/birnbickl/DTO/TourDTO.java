@@ -1,4 +1,4 @@
-package com.birnbickl.Touren_Zeit_Erfassung.DTO;
+package com.birnbickl.DTO;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

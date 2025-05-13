@@ -1,6 +1,6 @@
-package com.birnbickl.Touren_Zeit_Erfassung.Repository;
+package com.birnbickl.Repository;
 
-import com.birnbickl.Touren_Zeit_Erfassung.Entity.UserEntity;
+import com.birnbickl.Entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

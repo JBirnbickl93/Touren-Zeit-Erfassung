@@ -1,10 +1,10 @@
-package com.birnbickl.Touren_Zeit_Erfassung.Controller;
+package com.birnbickl.Controller;
 
-import com.birnbickl.Touren_Zeit_Erfassung.DTO.TourDTO;
-import com.birnbickl.Touren_Zeit_Erfassung.DTO.TourPatchDTO;
-import com.birnbickl.Touren_Zeit_Erfassung.Entity.TourEntity;
-import com.birnbickl.Touren_Zeit_Erfassung.Mapper.TourMapper;
-import com.birnbickl.Touren_Zeit_Erfassung.Service.TourService;
+import com.birnbickl.DTO.TourDTO;
+import com.birnbickl.DTO.TourPatchDTO;
+import com.birnbickl.Entity.TourEntity;
+import com.birnbickl.Mapper.TourMapper;
+import com.birnbickl.Service.TourService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

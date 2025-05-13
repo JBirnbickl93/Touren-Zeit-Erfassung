@@ -1,9 +1,9 @@
-package com.birnbickl.Touren_Zeit_Erfassung.Service;
+package com.birnbickl.Service;
 
-import com.birnbickl.Touren_Zeit_Erfassung.Entity.UserEntity;
-import com.birnbickl.Touren_Zeit_Erfassung.ErrorHandling.InvalidCredentialsException;
-import com.birnbickl.Touren_Zeit_Erfassung.ErrorHandling.UsernameAlreadyExistsException;
-import com.birnbickl.Touren_Zeit_Erfassung.Repository.UserRepository;
+import com.birnbickl.Entity.UserEntity;
+import com.birnbickl.ErrorHandling.InvalidCredentialsException;
+import com.birnbickl.ErrorHandling.UsernameAlreadyExistsException;
+import com.birnbickl.Repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

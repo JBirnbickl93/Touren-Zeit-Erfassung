@@ -1,6 +1,6 @@
-package com.birnbickl.Touren_Zeit_Erfassung.Service;
+package com.birnbickl.Service;
 
-import com.birnbickl.Touren_Zeit_Erfassung.Entity.UserEntity;
+import com.birnbickl.Entity.UserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -50,12 +50,12 @@ public class JwtService {
     }
 
     // Methode um den Usernamen zu extrahieren
-    private String extractUsername(String token) {
+    public String extractUsername(String token) {
         return extractAllClaims(token).getSubject();
     }
 
     // Methode um Token zu validieren
-    private Boolean isTokenValid(String token, UserDetails user){
+    public Boolean isTokenValid(String token, UserDetails user){
     return extractAllClaims(token).getExpiration().before(new Date());
     }
 }

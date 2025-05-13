@@ -1,7 +1,7 @@
-package com.birnbickl.Touren_Zeit_Erfassung.Mapper;
+package com.birnbickl.Mapper;
 
-import com.birnbickl.Touren_Zeit_Erfassung.DTO.TourDTO;
-import com.birnbickl.Touren_Zeit_Erfassung.Entity.TourEntity;
+import com.birnbickl.DTO.TourDTO;
+import com.birnbickl.Entity.TourEntity;
 
 
 // Diese Klasse soll zur Umwandlung von DTO in Entity und umgekehrt dienen. ==> Hilfsklasse

@@ -1,6 +1,4 @@
-package com.birnbickl.Touren_Zeit_Erfassung.DTO;
-
-import org.springframework.cglib.core.Local;
+package com.birnbickl.DTO;
 
 import java.time.LocalDateTime;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.birnbickl.Touren_Zeit_Erfassung.DTO;
+package com.birnbickl.DTO;
 
 public class LoginResponseDTO {
     private String token;

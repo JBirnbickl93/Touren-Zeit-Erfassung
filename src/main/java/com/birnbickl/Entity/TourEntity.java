@@ -1,4 +1,4 @@
-package com.birnbickl.Touren_Zeit_Erfassung.Entity;
+package com.birnbickl.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.birnbickl.Touren_Zeit_Erfassung.ErrorHandling;
+package com.birnbickl.ErrorHandling;
 
 import java.time.LocalDateTime;
 import java.util.List;

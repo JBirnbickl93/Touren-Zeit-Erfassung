@@ -1,4 +1,4 @@
-package com.birnbickl.Touren_Zeit_Erfassung.ErrorHandling;
+package com.birnbickl.ErrorHandling;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolationException;

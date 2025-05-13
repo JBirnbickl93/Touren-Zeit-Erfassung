@@ -1,6 +1,6 @@
-package com.birnbickl.Touren_Zeit_Erfassung.Repository;
+package com.birnbickl.Repository;
 
-import com.birnbickl.Touren_Zeit_Erfassung.Entity.TourEntity;
+import com.birnbickl.Entity.TourEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TourRepository extends JpaRepository<TourEntity, Integer> {

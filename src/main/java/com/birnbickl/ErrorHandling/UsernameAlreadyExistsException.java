@@ -1,4 +1,4 @@
-package com.birnbickl.Touren_Zeit_Erfassung.ErrorHandling;
+package com.birnbickl.ErrorHandling;
 
 public class UsernameAlreadyExistsException extends RuntimeException {
 
