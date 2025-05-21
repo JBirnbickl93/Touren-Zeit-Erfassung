@@ -1,6 +1,7 @@
 package com.birnbickl.Service;
 
 import com.birnbickl.Entity.UserEntity;
+import com.birnbickl.Enum.Role;
 import com.birnbickl.ErrorHandling.InvalidCredentialsException;
 import com.birnbickl.ErrorHandling.UsernameAlreadyExistsException;
 import com.birnbickl.Repository.UserRepository;
@@ -32,6 +33,7 @@ public class UserService {
         } else {
             String encPassword = passwordEncoder.encode(password);
             UserEntity user = new UserEntity(username, encPassword);
+            user.setRole(Role.USER);
             UserEntity savedUser = userRepo.save(user);
             return savedUser;
         }

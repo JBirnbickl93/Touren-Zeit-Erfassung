@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 // Diese Klasse beinhaltet die Methode um das JWT zu generieren
 // sowie die Methoden zur Verschlüsselung, Validerung und Username-Extrahierung aus dem Token
@@ -26,10 +28,11 @@ public class JwtService {
 
     // Methode zur Generierung eines JWT
     public String generateToken(UserEntity user){
-        System.out.println("JWT SECRET = " + secret);
-        System.out.println("JWT EXPIRATION = " + jwtExpiration);
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("role", user.getRole());
 
-        return Jwts.builder().setSubject(user.getUsername()).setIssuedAt(new Date())
+        return Jwts.builder().setClaims(claims)
+                .setSubject(user.getUsername()).setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration))
                 .signWith(getSigningkey(), SignatureAlgorithm.HS256)
                 .compact();
@@ -57,5 +60,10 @@ public class JwtService {
     // Methode um Token zu validieren
     public Boolean isTokenValid(String token, UserDetails user){
     return extractAllClaims(token).getExpiration().before(new Date());
+    }
+
+    // Methode um User Rolle zu extrahieren
+    public String extractUserRole(String Token){
+        return extractAllClaims(Token).get("role", String.class);
     }
 }

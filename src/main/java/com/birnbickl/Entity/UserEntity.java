@@ -1,9 +1,7 @@
 package com.birnbickl.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.birnbickl.Enum.Role;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -21,8 +19,12 @@ public class UserEntity {
     @NotBlank(message = "Password darf nicht leer sein!")
     @Size(min=8, message = "Password muss mindestens 8 Zeichen haben!")
     private String password;
+
+
+
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String role = "USER";
+    private Role role;
 
     public UserEntity(String username, String password) {
         this.username = username;
@@ -52,5 +54,13 @@ public class UserEntity {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
