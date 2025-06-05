@@ -4,8 +4,14 @@ import com.birnbickl.Touren_Zeit_Erfassung.Entity.UserEntity;
 import com.birnbickl.Touren_Zeit_Erfassung.Enum.Role;
 import com.birnbickl.Touren_Zeit_Erfassung.Repository.UserRepository;
 import jakarta.annotation.PostConstruct;
+
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.util.Collection;
+import java.util.List;
+
 
 @Component
 public class AdminInit {
@@ -20,9 +26,7 @@ public class AdminInit {
     @PostConstruct
     public void init() {
         if (userRepository.findByUsername("admin").isEmpty()) {
-            UserEntity admin = new UserEntity("admin", passwordEncoder.encode("admin12345"));
-
-            admin.setRole(Role.ADMIN);
+            UserEntity admin = new UserEntity("admin", passwordEncoder.encode("admin12345"), Role.ADMIN);
             userRepository.save(admin);
             System.out.println("Admin added");
         } else {
