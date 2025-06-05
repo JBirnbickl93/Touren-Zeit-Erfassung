@@ -1,30 +1,22 @@
 package com.birnbickl.Touren_Zeit_Erfassung.Controller;
 
-import com.birnbickl.Touren_Zeit_Erfassung.DTO.UserDTO;
+
 import com.birnbickl.Touren_Zeit_Erfassung.Service.UserService;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/api")
-public class UserController {
+@RequestMapping("/api/user")
+public class UserDummyController {
 
     private final UserService userService;
-
-    public UserController(UserService userService) {
+    public UserDummyController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/admin/users")
-    @PreAuthorize("hasRole('ADMIN')")
-    public List<UserDTO> getAllUsers() {
-        return userService.getAllUsers();
+    @GetMapping("/hello")
+    public String helloUser(){
+        return "Hallo User oder höher!";
     }
 }
-
-
-

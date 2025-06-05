@@ -7,27 +7,25 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-
-
-
 @Component
-public class AdminInit {
+public class UserInit {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public AdminInit(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserInit(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @PostConstruct
     public void init() {
-        if (userRepository.findByUsername("admin").isEmpty()) {
-            UserEntity admin = new UserEntity("admin", passwordEncoder.encode("admin12345"), Role.ADMIN);
-            userRepository.save(admin);
-            System.out.println("Admin ist angelegt.");
-        } else {
-            System.out.println("Admin ist bereits angelegt.");
+        if (userRepository.findByUsername("user").isEmpty()){
+            UserEntity userDummy = new UserEntity("user", passwordEncoder.encode("user12345"), Role.USER);
+            userRepository.save(userDummy);
+            System.out.println("UserDummy ist angelegt.");
+        }
+        else {
+            System.out.println("User ist bereits angelegt.");
         }
     }
 }
